@@ -1,0 +1,13 @@
+.custom-button {
+    height: 4rem;
+    padding: 0 1.8rem;
+    background-color: $color-primary-3;
+    color: $color-primary-1;
+    border-radius: 1rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    &:hover {
+        background-color: $color-primary-4;
+    }
+}

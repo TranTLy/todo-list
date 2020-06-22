@@ -1,9 +1,34 @@
 .to-do-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: $color-primary-1;
+    &:hover  {
+        background-color: rgba($color-primary-2, .4);
+    }
+
+    &__left {
+        display: flex;
+        align-items: center;
+    }
     &__check {
-        color: gray;
+        cursor: pointer;
+        margin-right: 1rem;
+        font-size: 3rem;
+        width: 2.8rem;
+        height: 2.8rem;
+        border-radius: 50%;
+        color: #d9d9d9;
         &.checked {
-            color: green;
+            background-color: #52c41a;
             font-weight: bold;
         }
+    }
+    &__delete {
+        cursor: pointer;
+        font-size: 2.5rem;
+        color: #8c8c8c;
+        margin-left: 1rem;
     }
 }

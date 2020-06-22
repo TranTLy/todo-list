@@ -18,9 +18,9 @@ const TodoItem = ({ id, name, isChecked, toggleCheck, deleteItem }) => {
                 <span className={`lnr lnr-checkmark-circle to-do-item__check ${isChecked? 'checked': ''}`}
                 onClick= {handleToggleCheck}
                 />
+                <span className="to-do-item__name">{name}</span>
             </div>
-            <span className="to-do-item__name">{name}</span>
-            <span className="lnr lnr-trash"
+            <span className="lnr lnr-trash to-do-item__delete"
                 onClick={handleDelete}
             />
         </div>

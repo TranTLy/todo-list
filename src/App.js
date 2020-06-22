@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
-import './App.css';
-import './sass/index.scss'
 import CustomInput from './components/CustomInput/CustomInput';
 import ToDoList from './components/ToDoList/ToDoList';
+import ModeComponent from './components/ModeComponent/ModeComponent';
 import { MODE } from './constant';
+import './App.scss';
+import './sass/index.scss'
 
 
 // ToDoItemModel = {name: string, isChecked: boolean}
 
 const App = () => {
-  const [todoList, setTodoList] = useState([])
+  const [todoList, setTodoList] = useState([{name: 'Test', isChecked: true}])
+  const [todoListSearchResult, setTodoListSearchResult] = useState([])
+  const [mode, setMode] = useState(MODE.ADD)
+
+  const handleSearchTodo = (value) => {
+    const newTodoList = todoList.filter((item) => item.name.includes(value))
+    
+    setTodoListSearchResult(newTodoList)
+  }
 
   const handleAddTodo = (newItem) => {
-    console.log("index", newItem)
-
     setTodoList([...todoList, {...newItem}])
   }
 
@@ -30,16 +37,24 @@ const App = () => {
 
   const deleteItem = (index) => {
     const newTodoList = todoList.filter((_item, itemIndex) => itemIndex !== index)
-
     setTodoList(newTodoList)
+  }
 
+  const onChangeMode = (value) => {
+    setMode(value)
+    setTodoListSearchResult(todoList)
   }
 
   return (
-    <div className="App">
+    <div className="todo-component">
       <h1>To do list</h1>
-      <CustomInput onSubmit = {handleAddTodo} mode = {MODE.ADD}/>
-      <ToDoList data={todoList} toggleCheck={toggleCheck} deleteItem={deleteItem}/>
+      <ModeComponent mode={mode} onChangeMode={onChangeMode}/>
+      <div className="todo-component__input">
+        <CustomInput onSubmit = {mode === MODE.ADD ? handleAddTodo: handleSearchTodo} mode = {mode}/>
+      </div>
+      <div className="todo-component__list">
+        <ToDoList data={mode === MODE.ADD ? todoList : todoListSearchResult} toggleCheck={toggleCheck} deleteItem={deleteItem}/>
+      </div>
     </div>
   );
 }

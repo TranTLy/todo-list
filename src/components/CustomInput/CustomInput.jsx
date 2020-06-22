@@ -31,7 +31,9 @@ const CustomInput = ({mode, onSubmit}) => {
                 value = {value}
                 onChange = {onChangeValue}
                 />
-            <CustomButton onClick={handleSubmit}>Add</CustomButton>
+            <span className="custom-input__btn">
+                <CustomButton onClick={handleSubmit}>{mode===MODE.ADD? 'Add' : 'Search'}</CustomButton>
+            </span>
         </div>
     );
 }
