@@ -1,0 +1,9 @@
+.to-do-item {
+    &__check {
+        color: gray;
+        &.checked {
+            color: green;
+            font-weight: bold;
+        }
+    }
+}
