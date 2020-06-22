@@ -1,0 +1,21 @@
+.mode-component {
+    &__note {
+        color: #8c8c8c;
+    }
+    &__options-group {
+        margin: 2rem;
+    }
+    &__option {
+        padding: 1rem 2rem;
+        cursor: pointer;
+        border-radius: 5px;
+        color: $color-primary-3;
+        &.selected {
+            border: 2px solid $color-primary-3;
+        }
+        &:hover {
+            background-color: $color-primary-1;
+        }
+    }
+
+}

@@ -1,9 +1,16 @@
 .todo-component {
+  min-height: 95vh;
   text-align: center;
+  padding-top: 2rem;
+  position: relative;
+  &__heading {
+    margin-bottom: 4rem;
+  }
   &__input {
-    margin: 3rem 0;
+    margin: 6rem 0 3rem;
   }
   &__list {
     padding: 0 3rem;
+    padding-bottom: 10rem;
   }
 }

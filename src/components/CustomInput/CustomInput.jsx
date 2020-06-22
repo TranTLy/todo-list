@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import CustomButton from '../CustomButton/CustomButton'
 import { MODE } from '../../constant';
 
 
 const CustomInput = ({mode, onSubmit}) => {
     const [value, setValue] = useState("")
+
+    useEffect(()=>{
+        setValue("")
+    }, [mode])
     const onChangeValue = (e) => {
         e.preventDefault()
         setValue(e.target.value)
@@ -14,13 +18,14 @@ const CustomInput = ({mode, onSubmit}) => {
         e.preventDefault()
         
         if (mode === MODE.ADD) {
-            const item = {name: value, isChecked: false}
-            onSubmit(item)
+            if (value.trim().length >0){
+                const item = {name: value, isChecked: false}
+                onSubmit(item)
+                setValue("")
+            }
         } else {
             onSubmit(value)
         }
-
-        setValue("")
     }
 
     return (
