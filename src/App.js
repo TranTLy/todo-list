@@ -62,7 +62,9 @@ const App = () => {
 
   const onChangeMode = (value) => {
     setMode(value)
-    setTodoListSearchResult(todoList)
+    if (value === MODE.SEARCH && keyword !== "") {
+      setKeyword("")
+    }
   }
 
   return (
